@@ -6,9 +6,17 @@
 <body>
 <h1>Welcome!</h1>
 
-<p><a href="/login">login</a></p>
-<p>Click <a th:href="@{/user}">here</a> user</p>
-<p>Click <a th:href="@{/admin}">here</a> admin</p>
+<div th:if="${!#authorization.expression('isAuthenticated()')}">
+    <a th:href="@{/login}">Login</a>
+</div>
+<p><a style="text-align: center" th:href="@{/user}">Bấm vào đây để vào trang user</a></p>
+<p><a style="text-align: center" th:href="@{/admin}">Bấm vào đây để vào trang admin</a></p>
+
+<div th:if="${#authorization.expression('isAuthenticated()')}">
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
 
 
 </body>

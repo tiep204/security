@@ -14,10 +14,6 @@ public class DemoSecurityApplication {
     public static void main(String[] args) {
         SpringApplication.run(DemoSecurityApplication.class, args);
     }
-    @GetMapping("/users")
-    public String sayHello(@RequestParam(value = "loc ngao",defaultValue = "ngao no") String name){
-        return String.format("xin chao ",name);
-    }
 
 
 }
